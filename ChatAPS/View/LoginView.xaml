@@ -5,9 +5,121 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatAPS.View"
         mc:Ignorable="d"
-        Title="Login - Chat APS" Height="400" Width="500">
-    
-    <Grid>
+        Title="Login - Chat APS" Height="400" Width="500"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"        
+>
+
+    <Grid Background="#4C4B63">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="200*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.RowSpan="1" Background="#353546" MouseDown="Border_MouseDown">
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="Chat - APS"
+                       Foreground="#C3C3C3"
+                       FontWeight="SemiBold"
+                       VerticalAlignment="Center"
+                />
+
+                <StackPanel 
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal"
+                >
+                    <Button 
+                        Name="CloseBtn"
+                        Width="20"
+                        Height="20"
+                        Content="✕"
+                        FontWeight="SemiBold"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="Gray"
+                        VerticalAlignment="Center" 
+                        Click="CloseBtn_Click" 
+                    />
+
+
+
+
+                </StackPanel>
+
+
+            </Grid>
+
+        </Border>
+
+        <!--Body-->
+        
+        <Label 
+            Content="IP Address:" 
+            Margin="60,30,0,0" 
+            Grid.Row="2" 
+            VerticalAlignment="Top"
+            FontWeight="Bold" 
+            HorizontalAlignment="Left" 
+            Width="80"
+        />
+
+
+        <Label 
+            Content="Port:" 
+            Margin="60,70,0,0" 
+            Grid.Row="2" 
+            VerticalAlignment="Top"
+            FontWeight="Bold" 
+            HorizontalAlignment="Left" 
+            Width="80"
+        />
+
+        <TextBox 
+            Name="IpTxtBox"
+            HorizontalAlignment="Left" 
+            Margin="145,34,0,0" 
+            Grid.Row="2" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Width="120"
+        />
+
+        <!--Footer-->
+        
+        <TextBox 
+            Name="PortTxtBox"
+            HorizontalAlignment="Left" 
+            Margin="145,73,0,0" 
+            Grid.Row="2" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Width="120"
+        />
+
+        <Button 
+            Content="Sign In" 
+            Grid.Row="3" 
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Height="25"
+            Width="60"
+            FontWeight="Bold"
+            FontSize="12"
+        />
+        <Label 
+            Content="or click here to Sign Up!" 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center" 
+            Margin="0,61,0,0" 
+            Grid.Row="3" 
+            FontSize="11"
+            Foreground="#5FAAE7"
+        />
+        
 
     </Grid>
 </Window>
