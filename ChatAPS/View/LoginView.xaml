@@ -142,7 +142,7 @@
             Width="88"
             Background="White"
             FontWeight="Bold"
-            FontSize="12"
+            FontSize="12" Click="btnConectar_Click"
         />
 
 
