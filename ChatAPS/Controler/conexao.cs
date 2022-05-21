@@ -60,7 +60,7 @@ namespace ChatAPS.Controler
             if (ConResposta[0] == '1')
             {
                 // Atualiza o formulário para informar que esta conectado
-                this.Invoke(new AtualizaLogCallBack(this.AtualizaLog), new object[] { "Conectado com sucesso!" });
+                //this.Invoke(new AtualizaLogCallBack(this.AtualizaLog), new object[] { "Conectado com sucesso!" });
             }
             else // Se o primeiro caractere não for 1 a conexão falhou
             {
@@ -68,7 +68,7 @@ namespace ChatAPS.Controler
                 // Extrai o motivo da mensagem resposta. O motivo começa no 3o caractere
                 Motivo += ConResposta.Substring(2, ConResposta.Length - 2);
                 // Atualiza o formulário como o motivo da falha na conexão
-                this.Invoke(new FechaConexaoCallBack(this.FechaConexao), new object[] { Motivo });
+                //this.Invoke(new FechaConexaoCallBack(this.FechaConexao), new object[] { Motivo });
                 // Sai do método
                 return;
             }
@@ -77,13 +77,13 @@ namespace ChatAPS.Controler
             while (Conectado)
             {
                 // exibe mensagems no Textbox
-                this.Invoke(new AtualizaLogCallBack(this.AtualizaLog), new object[] { strReceptor.ReadLine() });
+                //this.Invoke(new AtualizaLogCallBack(this.AtualizaLog), new object[] { strReceptor.ReadLine() });
             }
         }
         public void AtualizaLog(string strMensagem)
         {
             // Anexa texto ao final de cada linha
-            txtLog.AppendText(strMensagem + "\r\n");
+            //txtLog.AppendText(strMensagem + "\r\n");
         }
         public void EnviaMensagem(string mensagem)
         {
@@ -93,7 +93,7 @@ namespace ChatAPS.Controler
                 stwEnviador.Flush();
             }
         }
-        public void FechaConexao(string Motivo)
+        public bool FechaConexao(string Motivo)
         {
             //FRONT
             //// Mostra o motivo porque a conexão encerrou
@@ -106,10 +106,11 @@ namespace ChatAPS.Controler
             //btnConectar.Text = "Conectado";
 
             // Fecha os objetos
-            Conectado = false;
+            
             stwEnviador.Close();
             strReceptor.Close();
             tcpServidor.Close();
+            return false;
         }
     }
 }

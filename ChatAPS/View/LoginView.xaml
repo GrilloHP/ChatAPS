@@ -97,7 +97,7 @@
         />
 
 
-        <Label x:Name="lblPorta" 
+        <Label x:Name="lblUsuario" 
             Content="Porta:" 
             Margin="111,90,0,0" 
             Grid.Row="2" 
@@ -121,7 +121,7 @@
         <!--Footer-->
 
         <TextBox 
-            x:Name="txtPorta"
+            x:Name="txtUsuario"
             HorizontalAlignment="Left" 
             Margin="209,94,0,0" 
             Grid.Row="2" 
@@ -142,7 +142,7 @@
             Width="88"
             Background="White"
             FontWeight="Bold"
-            FontSize="12"
+            FontSize="12" Click="btnConectar_Click"
         />
 
 
