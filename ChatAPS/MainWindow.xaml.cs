@@ -25,7 +25,7 @@ namespace ChatAPS
         {
             InitializeComponent();
 
-            LoginView lg = new LoginView();
+            ChatView lg = new ChatView();
             lg.Show();
             this.Close();
         }

@@ -1,0 +1,100 @@
+﻿<Window x:Class="ChatAPS.View.ChatView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChatAPS.View"
+        mc:Ignorable="d"
+        Title="Cliente - Chat APS" 
+        Height="450" 
+        Width="800" 
+        Background="#1F1F1F"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" Icon="/View/bubble-chat-24px.png">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="350"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+
+        <!-- Menu -->
+        <Border Grid.RowSpan="1" Background="#1F1F1F" MouseDown="Border_MouseDown">
+            <Grid HorizontalAlignment="Stretch">
+                <StackPanel HorizontalAlignment="Left" Width="200" Orientation="Horizontal">
+                    <Image
+                        Visibility="Visible"
+                        Name ="imgTitulo"
+                        Width="24" 
+                        Height="24" 
+                        Source="/img/bubble-chat-24px.png"
+                    />
+                    <Label x:Name="lblTitulo" Content="Chat - APS"
+                       Foreground="#FBFEF9"
+                       FontWeight="SemiBold"
+                    />
+
+                </StackPanel>
+
+
+                <StackPanel 
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal"
+                >
+                    <Button 
+                        x:Name="btnFechar"
+                        Width="20"
+                        Height="20"
+                        Content="✕"
+                        FontWeight="SemiBold"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="Gray"
+                        VerticalAlignment="Center" 
+                        Click="btnFechar_Click" 
+                    />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Body -->
+        <TextBox 
+            HorizontalAlignment="Center" 
+            Grid.Row="1" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Center" 
+            Width="750" 
+            Height="330"
+            Name="txtChat"
+            AcceptsReturn="True"
+            VerticalScrollBarVisibility="Visible"
+            IsReadOnly="True"
+        />
+
+        <TextBox
+            Grid.Row="2"
+            Height="40"
+            Width="650"
+            HorizontalAlignment="Left"
+            Margin="25,17,0,18"
+            VerticalScrollBarVisibility="Visible"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+        />
+
+        <Button
+            Grid.Row="2"
+            Height="40"
+            Width="80"
+            HorizontalAlignment="Right"
+            Margin="20,16, 25, 17"
+            Content="Enviar"
+            Background="White"
+            FontWeight="Bold"
+        />
+
+    </Grid>
+</Window>
