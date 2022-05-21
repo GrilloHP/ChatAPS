@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Controler\" />
     <Folder Include="Model\" />
+    <Folder Include="Fonts\" />
   </ItemGroup>
 
 </Project>

@@ -11,7 +11,7 @@
         WindowStartupLocation="CenterScreen"        
 >
 
-    <Grid Background="#4C4B63">
+    <Grid Background="#3D3D3D">
         <Grid.RowDefinitions>
             <RowDefinition Height="25*"/>
             <RowDefinition Height="100*"/>
@@ -19,10 +19,11 @@
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.RowSpan="1" Background="#353546" MouseDown="Border_MouseDown">
+        <!-- Menu -->
+        <Border Grid.RowSpan="1" Background="#1F1F1F" MouseDown="Border_MouseDown">
             <Grid HorizontalAlignment="Stretch">
-                <Label Content="Chat - APS"
-                       Foreground="#C3C3C3"
+                <Label x:Name="lblTitulo" Content="Chat - APS"
+                       Foreground="#FBFEF9"
                        FontWeight="SemiBold"
                        VerticalAlignment="Center"
                 />
@@ -32,7 +33,7 @@
                     Orientation="Horizontal"
                 >
                     <Button 
-                        Name="CloseBtn"
+                        x:Name="btnFechar"
                         Width="20"
                         Height="20"
                         Content="✕"
@@ -54,72 +55,98 @@
 
         </Border>
 
-        <!--Body-->
-        
+        <!-- Header - Logo -->
+
+        <Image x:Name="imgLogo" 
+            HorizontalAlignment="Left" 
+            Height="64" 
+            Margin="99,0,0,0" 
+            Grid.Row="1" 
+            VerticalAlignment="Center" 
+            Width="64" 
+            Source="/img/bubble-chat.png"
+        />
+
         <Label 
-            Content="IP Address:" 
-            Margin="60,30,0,0" 
+            Name="lblLogo" 
+            Foreground="#CCFCCF"
+            Content="CHAT APS" 
+            FontSize="40"
+            HorizontalAlignment="Left" 
+            Grid.Row="1" 
+            VerticalAlignment="Center" 
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Center"
+            RenderTransformOrigin="0.395,0.049" 
+            Width="224" 
+            Height="64" Margin="175,0,0,0"
+            Style="{StaticResource CustomFont}"
+        />
+
+        <!--Body-->
+
+        <Label x:Name="lblEnderecoIP" 
+            Content="Endereço IP:" 
+            Margin="111,49,0,0" 
             Grid.Row="2" 
             VerticalAlignment="Top"
             FontWeight="Bold" 
             HorizontalAlignment="Left" 
             Width="80"
+            Foreground="#CCFFFF"
         />
 
 
-        <Label 
-            Content="Port:" 
-            Margin="60,70,0,0" 
+        <Label x:Name="lblPorta" 
+            Content="Porta:" 
+            Margin="111,90,0,0" 
             Grid.Row="2" 
             VerticalAlignment="Top"
             FontWeight="Bold" 
             HorizontalAlignment="Left" 
             Width="80"
+            Foreground="#CCFFFF"
         />
 
         <TextBox 
-            Name="IpTxtBox"
+            x:Name="txtIP"
             HorizontalAlignment="Left" 
-            Margin="145,34,0,0" 
+            Margin="209,53,0,0" 
             Grid.Row="2" 
             Text="" 
             VerticalAlignment="Top" 
-            Width="120"
+            Width="135"
         />
 
         <!--Footer-->
-        
+
         <TextBox 
-            Name="PortTxtBox"
+            x:Name="txtPorta"
             HorizontalAlignment="Left" 
-            Margin="145,73,0,0" 
+            Margin="209,94,0,0" 
             Grid.Row="2" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
-            Width="120"
+            Width="135"
         />
 
-        <Button 
-            Content="Sign In" 
+        
+        <Button x:Name="btnConectar" 
+                
+            Content="Conectar" 
             Grid.Row="3" 
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             Height="25"
-            Width="60"
+            Width="88"
+            Background="White"
             FontWeight="Bold"
             FontSize="12"
         />
-        <Label 
-            Content="or click here to Sign Up!" 
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center" 
-            Margin="0,61,0,0" 
-            Grid.Row="3" 
-            FontSize="11"
-            Foreground="#5FAAE7"
-        />
-        
+
+
+
 
     </Grid>
 </Window>
