@@ -21,32 +21,32 @@ namespace ChatAPS.Controler
         public IPAddress enderecoIP;
         public bool Conectado;
 
-        public bool InicializaConexao(string servidorIP, string usuario = "Desconhecido")
-        {
-            try
-            {
-                // Trata o endereço IP informado em um objeto IPAdress
-                enderecoIP = IPAddress.Parse(servidorIP);
-                // Inicia uma nova conexão TCP com o servidor chat
-                tcpServidor = new TcpClient();
-                tcpServidor.Connect(enderecoIP, 2502);
+        //public bool InicializaConexao(string servidorIP, string usuario = "Desconhecido")
+        //{
+        //    try
+        //    {
+        //        // Trata o endereço IP informado em um objeto IPAdress
+        //        enderecoIP = IPAddress.Parse(servidorIP);
+        //        // Inicia uma nova conexão TCP com o servidor chat
+        //        tcpServidor = new TcpClient();
+        //        tcpServidor.Connect(enderecoIP, 2502);
 
-                // Ajuda a verificar se estamos conectados ou não
-                Conectado = true;
+        //        // Ajuda a verificar se estamos conectados ou não
+        //        Conectado = true;
 
-                // Envia o nome do usuário ao servidor
-                stwEnviador = new StreamWriter(tcpServidor.GetStream());
-                stwEnviador.WriteLine(usuario);
-                stwEnviador.Flush();
+        //        // Envia o nome do usuário ao servidor
+        //        stwEnviador = new StreamWriter(tcpServidor.GetStream());
+        //        stwEnviador.WriteLine(usuario);
+        //        stwEnviador.Flush();
 
-                //Inicia a thread para receber mensagens e nova comunicação
-                mensagemThread = new Thread(new ThreadStart(RecebeMensagens));
-                mensagemThread.Start();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
+        //        //Inicia a thread para receber mensagens e nova comunicação
+        //        mensagemThread = new Thread(new ThreadStart(RecebeMensagens));
+        //        mensagemThread.Start();
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return false;
 
                 //colocar uma mensagem na tela falando que deu falha de conexao (front)
             }
@@ -60,7 +60,7 @@ namespace ChatAPS.Controler
             if (ConResposta[0] == '1')
             {
                 // Atualiza o formulário para informar que esta conectado
-                this.Invoke(new AtualizaLogCallBack(this.AtualizaLog), new object[] { "Conectado com sucesso!" });
+                //this.Invoke(new AtualizaLogCallBack(this.AtualizaLog), new object[] { "Conectado com sucesso!" });
             }
             else // Se o primeiro caractere não for 1 a conexão falhou
             {
@@ -68,7 +68,7 @@ namespace ChatAPS.Controler
                 // Extrai o motivo da mensagem resposta. O motivo começa no 3o caractere
                 Motivo += ConResposta.Substring(2, ConResposta.Length - 2);
                 // Atualiza o formulário como o motivo da falha na conexão
-                this.Invoke(new FechaConexaoCallBack(this.FechaConexao), new object[] { Motivo });
+                //this.Invoke(new FechaConexaoCallBack(this.FechaConexao), new object[] { Motivo });
                 // Sai do método
                 return;
             }
@@ -77,25 +77,23 @@ namespace ChatAPS.Controler
             while (Conectado)
             {
                 // exibe mensagems no Textbox
-                this.Invoke(new AtualizaLogCallBack(this.AtualizaLog), new object[] { strReceptor.ReadLine() });
+                //this.Invoke(new AtualizaLogCallBack(this.AtualizaLog), new object[] { strReceptor.ReadLine() });
             }
         }
         public void AtualizaLog(string strMensagem)
         {
             // Anexa texto ao final de cada linha
-            txtLog.AppendText(strMensagem + "\r\n");
+            //txtLog.AppendText(strMensagem + "\r\n");
         }
-        public void EnviaMensagem()
+        public void EnviaMensagem(string mensagem)
         {
-            if (txtMensagem.Lines.Length >= 1)
+            if (mensagem.Length >= 1)
             {
-                stwEnviador.WriteLine(txtMensagem.Text);
+                stwEnviador.WriteLine(mensagem);
                 stwEnviador.Flush();
-                txtMensagem.Lines = null;
             }
-            txtMensagem.Text = "";
         }
-        public void FechaConexao(string Motivo)
+        public bool FechaConexao(string Motivo)
         {
             //FRONT
             //// Mostra o motivo porque a conexão encerrou
@@ -108,10 +106,11 @@ namespace ChatAPS.Controler
             //btnConectar.Text = "Conectado";
 
             // Fecha os objetos
-            Conectado = false;
+            
             stwEnviador.Close();
             strReceptor.Close();
             tcpServidor.Close();
+            return false;
         }
     }
 }
