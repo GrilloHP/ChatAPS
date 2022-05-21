@@ -85,15 +85,13 @@ namespace ChatAPS.Controler
             // Anexa texto ao final de cada linha
             txtLog.AppendText(strMensagem + "\r\n");
         }
-        public void EnviaMensagem()
+        public void EnviaMensagem(string mensagem)
         {
-            if (txtMensagem.Lines.Length >= 1)
+            if (mensagem.Length >= 1)
             {
-                stwEnviador.WriteLine(txtMensagem.Text);
+                stwEnviador.WriteLine(mensagem);
                 stwEnviador.Flush();
-                txtMensagem.Lines = null;
             }
-            txtMensagem.Text = "";
         }
         public void FechaConexao(string Motivo)
         {
