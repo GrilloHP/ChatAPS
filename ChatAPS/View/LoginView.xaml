@@ -8,8 +8,8 @@
         Title="Login - Chat APS" Height="400" Width="500"
         WindowStyle="None"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"        
->
+        WindowStartupLocation="CenterScreen" 
+    >
 
     <Grid Background="#3D3D3D">
         <Grid.RowDefinitions>

@@ -11,7 +11,7 @@
         Background="#1F1F1F"
         WindowStyle="None"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen" Icon="/View/bubble-chat-24px.png">
+        WindowStartupLocation="CenterScreen" >
 
     <Grid>
         <Grid.RowDefinitions>
