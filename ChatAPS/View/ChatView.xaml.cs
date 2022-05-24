@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ChatAPS.Controler;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ChatAPS.View
 {
@@ -19,20 +9,36 @@ namespace ChatAPS.View
     /// </summary>
     public partial class ChatView : Window
     {
+        LoginView frm = new LoginView();
+        conexao con = new conexao();
         public ChatView()
         {
             InitializeComponent();
+            while (frm.Conectado)
+            {
+                con.AtualizaLog(txtChat.Text);
+            }
         }
 
         private void btnFechar_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
+        {      
+            con.FechaConexao("Desconectado a pedido do usuário.");
+
+            if (frm.Conectado)
+            {
+                frm.ShowDialog();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Erro para desconectar!");
+            }
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
-        }
+        }       
     }
 }

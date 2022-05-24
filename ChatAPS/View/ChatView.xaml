@@ -82,7 +82,7 @@
             Margin="25,17,0,18"
             VerticalScrollBarVisibility="Visible"
             TextWrapping="Wrap"
-            AcceptsReturn="True"
+            AcceptsReturn="False"
         />
 
         <Button

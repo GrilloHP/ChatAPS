@@ -12,6 +12,7 @@ namespace ChatAPS.View
         public bool Conectado = false;
         conexao con = new conexao();
 
+
         public LoginView()
         {
             InitializeComponent();
@@ -30,19 +31,27 @@ namespace ChatAPS.View
 
         private void btnConectar_Click(object sender, RoutedEventArgs e)
         {
+            conexao con = new conexao();
             if (Conectado == false)
             {
                 // Inicializa a conexão
                Conectado = con.InicializaConexao(txtIP.Text,txtUsuario.Text);
                 if (Conectado)
-                {
+                { 
+                    ChatView fmr = new ChatView();
                     //chama proxima tela
+                    fmr.Show();
+                    //fecha essa tela
                     this.Close();
                 }
+                else
+                {
+                    MessageBox.Show("Erro ao estabelecer conexao");
+                }
             }
-            else // Se esta conectado entao desconecta
+            else
             {
-                Conectado = con.FechaConexao("Desconectado a pedido do usuário.");
+                MessageBox.Show("Erro ao estabelecer conexao");
             }
         }
     }
