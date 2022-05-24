@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ServerChatAPS.View;
 
 namespace ServerChatAPS
 {
@@ -22,7 +23,9 @@ namespace ServerChatAPS
     {
         public MainWindow()
         {
-            InitializeComponent();
+            ServerView sv = new ServerView();
+            sv.Show();
+            Close();
         }
     }
 }
